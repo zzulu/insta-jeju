@@ -65,6 +65,20 @@ gem 'carrierwave'
 
 위의 gem들을 **Gemfile**에 추가 후, 아래 쪽의 terminal에서 `bundle install` 명령어로 gem 설치.
 
+오류가 발생하여 설치가 진행되지 않는다면, 아래의 명령어로 필요 라이브러리를 설치하자.
+
+1. AWS C9 (Amazon Linux)
+
+```console
+sudo yum install libxml2-devel libcurl-devel
+```
+
+2. Old C9 (Ubuntu)
+
+```console
+sudo apt-get update && sudo apt-get install libxml2-dev libcurl4-openssl-dev
+```
+
 ### config/initalizers/fog.rb
 
 파일을 새로 생성한 후, 아래의 코드를 복사하여 붙여넣는다.
