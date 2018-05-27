@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :posts do
     post 'like', to: 'posts#like', as: :like, on: :member
   end
-  get 'mypage', to: 'posts#mypage'
+  resources :users, only:[:show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

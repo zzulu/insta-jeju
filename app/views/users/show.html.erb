@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1><%= @user.name %>Posts</h1>
 
 <table>
   <thead>
@@ -16,7 +16,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= image_tag post.image.url(:thumb) %></td>
-        <td><%= link_to post.user.name, post.user %></td>
+        <td><%= post.user.name %></td>
         <td><%= post.content %></td>
         <td><%= link_to 'Show', post %></td>
         <% if can? :manage, :post %>
@@ -30,4 +30,6 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<% if can? :update, @user %>
+  <%= link_to 'Edit User', edit_user_registration_path %>
+<% end %>
