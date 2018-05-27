@@ -15,6 +15,17 @@
   <%= @post.content %>
 </p>
 
+<p>
+  <strong>Like:</strong>
+  <%= @post.like_users.count %>
+</p>
+
+<% if @post.like_users.include?(current_user) %>
+  <%= link_to 'Unlike', like_post_path(@post), method: :post %>
+<% else %>
+  <%= link_to 'Like', like_post_path(@post), method: :post %>
+<% end %>
+
 <% if can? :manage, @post %>
   <%= link_to 'Edit', edit_post_path(@post) %> |
   <%= link_to 'Back', posts_path %>

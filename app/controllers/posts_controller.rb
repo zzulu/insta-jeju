@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
 
   load_and_authorize_resource
 
@@ -66,6 +66,11 @@ class PostsController < ApplicationController
   
   def mypage
     @posts = current_user.posts
+  end
+  
+  def like
+    @post.toggle_like(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   private

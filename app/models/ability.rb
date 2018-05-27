@@ -5,6 +5,7 @@ class Ability
     can :read, :all
     if user.present?
       can :manage, Post, user_id: user.id
+      can :like, Post
       if user.has_role?(:admin)
         can :manage, :all
       end
