@@ -7,6 +7,9 @@ class Ability
       can :manage, Post, user_id: user.id
       can :like, Post
       can :update, User, id: user.id
+      can :follow, User do |u|
+        u != user
+      end
       if user.has_role?(:admin)
         can :manage, :all
       end
