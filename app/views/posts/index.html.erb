@@ -2,6 +2,12 @@
 
 <h1>Posts</h1>
 
+<%= form_tag posts_path, method: :get do %>
+  Content:
+  <%= text_field_tag :content, params[:content] %>
+  <%= submit_tag :search %>
+<% end %>
+
 <table>
   <thead>
     <tr>

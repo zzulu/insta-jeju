@@ -7,7 +7,21 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(user_id: current_user.followees.ids.push(current_user.id))
+    if params.has_key?(:content)
+      @posts = Post.where('content like ?', "%#{params[:content]}%")
+    else
+      @posts = Post.where(user_id: current_user.followees.ids.push(current_user.id))
+    end 
+    # Rails ActiveRecord Query
+    # 1. all - N
+    # 2. find(1), find(2) - 1
+    # 3. find([1,2]) - N
+    # 4. where() - N
+    # 5. where.not() - N
+    # 6. order() - N
+    # 7. first, first(n) - 1 or N
+    # 8. last, last(n) - 1 or N
+    # 9. limit(n) - 1 or N
   end
 
   # GET /posts/1
