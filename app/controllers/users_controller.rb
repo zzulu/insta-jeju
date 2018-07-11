@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
   
   def follow
-    @user.toggle_like(current_user)
+    @user.toggle_follow(current_user)
     redirect_back(fallback_location: root_path)
   end
   

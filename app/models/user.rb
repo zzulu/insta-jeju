@@ -24,7 +24,7 @@ class User < ApplicationRecord
     self.add_role(:newuser) if self.roles.blank?
   end
   
-  def toggle_like(user)
+  def toggle_follow(user)
     if self.followers.include?(user)
       self.followers.delete(user)
     else
